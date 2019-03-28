@@ -90,7 +90,15 @@ function third_test
         rm -r second
 }
 
-
-first_test
-second_test
-third_test
+if [ "$1" = "--help" ]; then
+        echo "Usage: delete [path] [allowedExt] [--tests]"
+        echo "       [path] - path where we deleting similar files"
+	echo "       [allowedExt] - extensions of files which not deletes"
+        echo "       [--tests] - runs tests to delete functionality"
+elif [ "$1" = "--tests" ]; then
+        first_test
+        second_test
+        third_test
+else
+        remove_duplicates $1 $2
+fi
