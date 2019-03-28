@@ -2,6 +2,14 @@
 declare oldest_dir
 declare oldest_date
 
+function find_oldest_dir
+{
+        oldest_dir=$1
+        oldest_date=$(stat $oldest_dir -c %Y)
+        find_dir $oldest_dir
+}
+
+
 function find_dir
 {
         for dir in $1/*; do
@@ -16,18 +24,6 @@ function find_dir
         done
 }
 
-
-
-
-function find_oldest_dir
-{
-	oldest_dir=$1
-	oldest_date=$(stat $oldest_dir -c %Y)
-	find_dir $oldest_dir
-}
-
-
-find_
 function first_test
 {
 	mkdir first
@@ -43,8 +39,8 @@ function first_test
 	mkdir 6
 	cd ../
 	find_oldest_dir $PWD
-	echo $oldest_dir
-        if [ "$oldest_dir" = "/home/bohdan/Desktop/FirstBash/first/3" ]; then
+	#echo $oldest_dir
+        if [ "$oldest_dir" = "/home/bohdan/Desktop/Unix-Programming/FirstBash/first/3" ]; then
 		echo "test 1 successfull"
 	else
 		echo "test 1 failed"
@@ -72,7 +68,7 @@ function second_test
 	cd ../
         find_oldest_dir $PWD
         #echo $oldest_dir
-	if [ "$oldest_dir" = "/home/bohdan/Desktop/FirstBash/first/3/7" ]; then
+	if [ "$oldest_dir" = "/home/bohdan/Desktop/Unix-Programming/FirstBash/first/3/7" ]; then
                 echo "test 2 successfull"
         else
                 echo "test 2 failed"
@@ -104,7 +100,7 @@ function third_test
         cd ../
         find_oldest_dir $PWD
 	#echo $oldest_dir
-        if [ "$oldest_dir" = "/home/bohdan/Desktop/FirstBash/first/3/8/9" ]; then
+        if [ "$oldest_dir" = "/home/bohdan/Desktop/Unix-Programming/FirstBash/first/3/8/9" ]; then
                 echo "test 3 successfull"
         else
                 echo "test 3 failed"
@@ -113,6 +109,16 @@ function third_test
         rm -r first
 }
 
-#first_test
-#second_test
-#third_test
+if [ "$1" = "--help" ]; then
+        echo "Usage: find [path] [--tests]"
+        echo "       [path] - path where we searching for the oldest dir"
+        echo "       [--tests] - runs tests to searching functionality"
+elif [ "$1" = "--tests" ]; then
+        first_test
+        second_test
+        third_test
+else
+        find_oldest_dir $1
+	echo $oldest_dir
+fi
+
