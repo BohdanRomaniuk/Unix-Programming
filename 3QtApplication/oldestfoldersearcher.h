@@ -15,19 +15,21 @@ private:
     QDir* _sourceDir;
     QString _oldestDir;
     QDateTime _oldestDirDate;
+    //Logger
+    DatabaseLogger* _logger;
 
     QFileInfoList _getAllSubdirectories(QDir dir)
     {
         return dir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot);
     }
 public:
-    OldesttFolderSearcher(QDir* sourceDir)
+    OldesttFolderSearcher(QDir* sourceDir, DatabaseLogger* logger)
     {
         _sourceDir = sourceDir;
         _oldestDir = sourceDir->absolutePath();
         QFileInfo* dirInfo = new QFileInfo(sourceDir->absolutePath());
         _oldestDirDate = dirInfo->lastModified();
-        //_logger = logger;
+        _logger = logger;
     }
 
     SearchResult findOldestDir()
@@ -38,7 +40,7 @@ public:
     SearchResult findOldestDir(QDir dir)
     {
         QFileInfo* dirInfo = new QFileInfo(dir.absolutePath());
-        //_logger->log("Searching oldest dir::: Directory: " + dir.dirName() + " Create date:" + dirInfo->lastModified().toString());
+        _logger->log("Searching oldest dir::: Directory: " + dir.dirName() + " Create date:" + dirInfo->lastModified().toString());
 
         auto files = _getAllSubdirectories(dir);
         foreach(auto file, files)

@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "databaselogger.h"
 #include "oldestfoldersearcher.h"
 #include "searchresult.h"
 #include <QFileDialog>
@@ -37,7 +38,7 @@ void MainWindow::on_pushButton_4_clicked()
         return;
     }
 
-    OldesttFolderSearcher searcher(&dir);
+    OldesttFolderSearcher searcher(&dir, new DatabaseLogger("MyProgramLog.db"));
     SearchResult result = searcher.findOldestDir();
     ui->oldestDirName->setText(result.getDirName());
     ui->oldestDirCreateDate->setText(result.getDirCreateDate().toString());

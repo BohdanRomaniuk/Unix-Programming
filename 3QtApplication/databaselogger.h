@@ -49,7 +49,7 @@ public:
         QSqlQuery query;
         QString queryString = QString("CREATE TABLE IF NOT EXISTS logs(id integer PRIMARY KEY AUTOINCREMENT,") +
                 QString("message varchar(512),") +
-                QString("dt datetime DEFAULT current_timestamp)");
+                QString("date datetime DEFAULT current_timestamp)");
 
         if (!query.exec(queryString))
         {
