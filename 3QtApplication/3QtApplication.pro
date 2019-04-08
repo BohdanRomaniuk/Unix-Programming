@@ -29,7 +29,9 @@ SOURCES += \
 
 HEADERS += \
         mainwindow.h \
-    databaselogger.h
+    databaselogger.h \
+    oldestfoldersearcher.h \
+    searchresult.h
 
 FORMS += \
         mainwindow.ui

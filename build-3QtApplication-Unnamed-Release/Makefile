@@ -113,6 +113,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
+		../3QtApplication/.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
@@ -132,7 +133,9 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../3QtApplication/3QtApplication.pro ../3QtApplication/mainwindow.h \
-		../3QtApplication/databaselogger.h ../3QtApplication/main.cpp \
+		../3QtApplication/databaselogger.h \
+		../3QtApplication/oldestfoldersearcher.h \
+		../3QtApplication/searchresult.h ../3QtApplication/main.cpp \
 		../3QtApplication/mainwindow.cpp
 QMAKE_TARGET  = 3QtApplication
 DESTDIR       = 
@@ -203,6 +206,7 @@ Makefile: ../3QtApplication/3QtApplication.pro /usr/lib/x86_64-linux-gnu/qt5/mks
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
@@ -284,6 +288,7 @@ Makefile: ../3QtApplication/3QtApplication.pro /usr/lib/x86_64-linux-gnu/qt5/mks
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf:
@@ -321,7 +326,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../3QtApplication/mainwindow.h ../3QtApplication/databaselogger.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../3QtApplication/mainwindow.h ../3QtApplication/databaselogger.h ../3QtApplication/oldestfoldersearcher.h ../3QtApplication/searchresult.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../3QtApplication/main.cpp ../3QtApplication/mainwindow.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../3QtApplication/mainwindow.ui $(DISTDIR)/
 
@@ -386,7 +391,10 @@ main.o: ../3QtApplication/main.cpp ../3QtApplication/mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../3QtApplication/main.cpp
 
 mainwindow.o: ../3QtApplication/mainwindow.cpp ../3QtApplication/mainwindow.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		../3QtApplication/oldestfoldersearcher.h \
+		../3QtApplication/databaselogger.h \
+		../3QtApplication/searchresult.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../3QtApplication/mainwindow.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
