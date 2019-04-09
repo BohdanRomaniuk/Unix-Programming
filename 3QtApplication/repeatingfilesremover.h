@@ -26,6 +26,7 @@ public:
     int removeSimilar(QString allowedExt)
     {
         int removedCount = 0;
+        _logger->log("Removing files:: Directory " + _sourceDir->dirName() + " Allowed extension " + allowedExt);
         QFileInfoList files = _sourceDir->entryInfoList(QDir::Files | QDir::NoDotAndDotDot);
         for(int i=0; i<files.size(); ++i)
         {
@@ -40,12 +41,14 @@ public:
                     if(ext1!=allowedExt && fileExists(files[i].absoluteFilePath()))
                     {
                         QFile file(files[i].absoluteFilePath());
+                        _logger->log("Removing files:: Removed " + files[i].absoluteFilePath());
                         file.remove();
                         ++removedCount;
                     }
                     if(ext2!=allowedExt && fileExists(files[j].absoluteFilePath()))
                     {
                         QFile file(files[j].absoluteFilePath());
+                        _logger->log("Removing files:: Removed " + files[j].absoluteFilePath());
                         file.remove();
                         ++removedCount;
                     }
