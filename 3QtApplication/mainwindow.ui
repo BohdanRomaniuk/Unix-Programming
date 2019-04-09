@@ -18,7 +18,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab1">
        <attribute name="title">
@@ -113,14 +113,14 @@
            <item>
             <widget class="QPushButton" name="chooseDirButton2">
              <property name="text">
-              <string>Choose directory</string>
+              <string>Choose</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QLabel" name="allowedExt">
              <property name="text">
-              <string>Allowed extension</string>
+              <string>Allowed ext</string>
              </property>
             </widget>
            </item>
@@ -137,7 +137,7 @@
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_2">
            <item>
-            <widget class="QListView" name="listView"/>
+            <widget class="QTableView" name="tableView"/>
            </item>
           </layout>
          </widget>

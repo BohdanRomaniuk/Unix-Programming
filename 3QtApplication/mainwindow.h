@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "databaselogger.h"
 
 namespace Ui {
 class MainWindow;
@@ -20,8 +21,15 @@ private slots:
 
     void on_pushButton_4_clicked();
 
+    void on_chooseDirButton2_clicked();
+
+    void showFilesInDirectory(QString dirPath);
+
+    void on_removeSimilarButton_clicked();
+
 private:
     Ui::MainWindow *ui;
+    DatabaseLogger* _logger;
 };
 
 #endif // MAINWINDOW_H

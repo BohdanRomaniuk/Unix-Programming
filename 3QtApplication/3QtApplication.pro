@@ -32,7 +32,8 @@ HEADERS += \
         mainwindow.h \
     databaselogger.h \
     oldestfoldersearcher.h \
-    searchresult.h
+    searchresult.h \
+    repeatingfilesremover.h
 
 FORMS += \
         mainwindow.ui
