@@ -1,13 +1,15 @@
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QStandardItemModel>
+#include <QModelIndex>>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "databaselogger.h"
 #include "oldestfoldersearcher.h"
 #include "repeatingfilesremover.h"
 #include "searchresult.h"
-#include <QFileDialog>
-#include <QMessageBox>
-#include <QStandardItemModel>
-#include <QModelIndex>>
+#include "oldestsearchcommand.h"
+#include "repeatingremovecommand.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -15,6 +17,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     _logger = new DatabaseLogger("MyProgramLog.db");
+    _tests = new Tests();
+    _undoStack1 = new QUndoStack();
+    _undoStack2 = new QUndoStack();
 }
 
 MainWindow::~MainWindow()
@@ -31,21 +36,10 @@ void MainWindow::on_chooseDirButton_clicked()
 
 void MainWindow::on_pushButton_4_clicked()
 {
-    QString dirPath = ui->selectedDir->text();
-    QDir dir(dirPath);
-    if(!dir.exists())
-    {
-        QMessageBox box;
-        box.setText("Folder " + dirPath + " doesn't exist");
-        box.exec();
-
-        return;
-    }
-
-    OldesttFolderSearcher searcher(&dir, _logger);
-    SearchResult result = searcher.findOldestDir();
-    ui->oldestDirName->setText(result.getDirName());
-    ui->oldestDirCreateDate->setText(result.getDirCreateDate().toString());
+    oldDirPath1 = newDirPath1;
+    newDirPath1 = ui->selectedDir->text();
+    auto command = new SearchOldestFolderCommand(oldDirPath1, newDirPath1, ui->selectedDir, ui->oldestDirName, ui->oldestDirCreateDate, _logger);
+    _undoStack1->push(command);
 }
 
 void MainWindow::on_chooseDirButton2_clicked()
@@ -59,25 +53,19 @@ void MainWindow::on_chooseDirButton2_clicked()
 
 void MainWindow::on_removeSimilarButton_clicked()
 {
-    QString dirPath = ui->selectedDir2->text();
-    QDir dir(dirPath);
-    if(!dir.exists())
-    {
-        QMessageBox box;
-        box.setText("Folder " + dirPath + " doesn't exist");
-        box.exec();
+    auto command = new RepeatingRemoveCommand(ui->selectedDir2->text(), ui->allowedExtension->text(), ui->tableView, _logger);
+    _undoStack2->push(command);
+}
 
-        return;
-    }
+void MainWindow::on_runTestsButton1_clicked()
+{
+    _tests->runFirstTaskTests();
+}
 
-    RepeatingFilesRemover remover(&dir, _logger);
-    int removed = remover.removeSimilar(ui->allowedExtension->text());
 
-    QMessageBox box;
-    box.setText("Removed " + QString::number(removed) + " files");
-    box.exec();
-
-    showFilesInDirectory(dirPath);
+void MainWindow::on_runTestsButton2_clicked()
+{
+    _tests->runSecondTaskTests();
 }
 
 void MainWindow::showFilesInDirectory(QString dirPath)
@@ -110,4 +98,24 @@ void MainWindow::showFilesInDirectory(QString dirPath)
 
     ui->tableView->setModel(model);
     ui->tableView->resizeColumnsToContents();
+}
+
+void MainWindow::on_undoButton1_clicked()
+{
+    _undoStack1->undo();
+}
+
+void MainWindow::on_redoButton1_clicked()
+{
+    _undoStack1->redo();
+}
+
+void MainWindow::on_undoButton2_clicked()
+{
+    _undoStack2->undo();
+}
+
+void MainWindow::on_redoButton2_clicked()
+{
+    _undoStack2->redo();
 }

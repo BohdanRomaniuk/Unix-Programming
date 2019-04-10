@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>600</width>
-    <height>350</height>
+    <height>360</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,14 +18,14 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab1">
        <attribute name="title">
         <string>Find oldest dir</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_2">
-        <item row="1" column="0" colspan="3">
+        <item row="1" column="0" colspan="5">
          <widget class="QGroupBox" name="groupBox">
           <property name="title">
            <string>Select directory</string>
@@ -51,7 +51,7 @@
           </property>
          </widget>
         </item>
-        <item row="2" column="0" colspan="3">
+        <item row="2" column="0" colspan="5">
          <widget class="QGroupBox" name="groupBox_2">
           <property name="title">
            <string>Search results</string>
@@ -87,10 +87,17 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="2">
+        <item row="0" column="4">
          <widget class="QPushButton" name="pushButton_4">
           <property name="text">
            <string>Search</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="QPushButton" name="runTestsButton1">
+          <property name="text">
+           <string>Run tests</string>
           </property>
          </widget>
         </item>
@@ -101,7 +108,7 @@
         <string>Delete files with the same name</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout">
-        <item row="3" column="0" colspan="3">
+        <item row="3" column="0" colspan="5">
          <widget class="QGroupBox" name="groupBox_3">
           <property name="title">
            <string>Select directory</string>
@@ -130,7 +137,7 @@
           </layout>
          </widget>
         </item>
-        <item row="4" column="0" colspan="3">
+        <item row="4" column="0" colspan="5">
          <widget class="QGroupBox" name="groupBox_4">
           <property name="title">
            <string>Direcotry files</string>
@@ -142,7 +149,7 @@
           </layout>
          </widget>
         </item>
-        <item row="0" column="2">
+        <item row="0" column="4">
          <widget class="QPushButton" name="removeSimilarButton">
           <property name="text">
            <string>Remove similar</string>
@@ -160,6 +167,13 @@
          <widget class="QPushButton" name="undoButton2">
           <property name="text">
            <string>Undo</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="QPushButton" name="runTestsButton2">
+          <property name="text">
+           <string>Run tests</string>
           </property>
          </widget>
         </item>
