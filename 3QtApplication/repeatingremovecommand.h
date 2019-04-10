@@ -64,6 +64,7 @@ public:
         box.setText("_oldFiles.size()=" + QString::number(_oldFiles->size()) + " _newFiles.size()=" + QString::number(_newFiles->size()));
         box.exec();
         return;
+        //showFilesInTable(files2);
     }
 
     void redo() override
@@ -78,7 +79,7 @@ public:
         }
 
         QFileInfoList files1 = dir.entryInfoList(QDir::Files | QDir::NoDotAndDotDot);
-        _oldFiles = &files1;
+        _oldFiles = new QFileInfoList(files1);
 
         RepeatingFilesRemover remover(&dir, _logger);
         int removed = remover.removeSimilar(_allowedExt);
@@ -88,7 +89,7 @@ public:
         box.exec();
 
         QFileInfoList files2 = dir.entryInfoList(QDir::Files | QDir::NoDotAndDotDot);
-        _newFiles = &files2;
+        _newFiles = new QFileInfoList(files2);
 
         showFilesInTable(files2);
     }
