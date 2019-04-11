@@ -18,7 +18,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab1">
        <attribute name="title">
@@ -32,7 +32,11 @@
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
-            <widget class="QLineEdit" name="selectedDir"/>
+            <widget class="QLineEdit" name="selectedDir">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+            </widget>
            </item>
            <item>
             <widget class="QPushButton" name="chooseDirButton">
@@ -65,7 +69,11 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="oldestDirName"/>
+            <widget class="QLineEdit" name="oldestDirName">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+            </widget>
            </item>
            <item>
             <widget class="QLabel" name="label_2">
@@ -75,7 +83,11 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="oldestDirCreateDate"/>
+            <widget class="QLineEdit" name="oldestDirCreateDate">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+            </widget>
            </item>
           </layout>
          </widget>
@@ -115,7 +127,11 @@
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout">
            <item>
-            <widget class="QLineEdit" name="selectedDir2"/>
+            <widget class="QLineEdit" name="selectedDir2">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+            </widget>
            </item>
            <item>
             <widget class="QPushButton" name="chooseDirButton2">

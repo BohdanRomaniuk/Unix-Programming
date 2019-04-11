@@ -5,6 +5,7 @@
 #include <QUndoStack>
 #include <QUndoCommand>
 #include <QLineEdit>
+#include <QPainter>
 #include "databaselogger.h"
 #include "tests.h"
 #include "oldestfoldersearcher.h"
@@ -20,6 +21,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+    void paintEvent( QPaintEvent * event );
 
 private slots:
     void on_chooseDirButton_clicked();

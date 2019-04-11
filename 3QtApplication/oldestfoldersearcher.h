@@ -27,7 +27,7 @@ public:
         _sourceDir = sourceDir;
         _oldestDir = sourceDir->absolutePath();
         QFileInfo dirInfo(sourceDir->absolutePath());
-        _oldestDirDate = dirInfo.lastModified();
+        _oldestDirDate = dirInfo.lastModified().addMonths(12);
         _logger = logger;
     }
 

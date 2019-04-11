@@ -49,6 +49,12 @@ private:
         _table->setModel(model);
         _table->resizeColumnsToContents();
     }
+
+    bool fileExists(QString filePath)
+    {
+        QFileInfo check_file(filePath);
+        return check_file.exists();
+    }
 public:
     RepeatingRemoveCommand(QString dirPath, QString allowedExt, QTableView* table, DatabaseLogger* logger)
     {
@@ -60,11 +66,17 @@ public:
 
     void undo() override
     {
-        QMessageBox box;
-        box.setText("_oldFiles.size()=" + QString::number(_oldFiles->size()) + " _newFiles.size()=" + QString::number(_newFiles->size()));
-        box.exec();
-        return;
-        //showFilesInTable(files2);
+        foreach(QFileInfo file, *_oldFiles)
+        {
+            if(!fileExists(file.absoluteFilePath()))
+            {
+                QFile newFile(file.absoluteFilePath());
+                newFile.open(QIODevice::WriteOnly);
+            }
+        }
+        QDir dir(_dirPath);
+        QFileInfoList files = dir.entryInfoList(QDir::Files | QDir::NoDotAndDotDot);
+        showFilesInTable(files);
     }
 
     void redo() override
