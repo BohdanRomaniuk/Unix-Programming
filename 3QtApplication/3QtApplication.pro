@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -28,7 +29,14 @@ SOURCES += \
         mainwindow.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    databaselogger.h \
+    oldestfoldersearcher.h \
+    searchresult.h \
+    repeatingfilesremover.h \
+    tests.h \
+    oldestsearchcommand.h \
+    repeatingremovecommand.h
 
 FORMS += \
         mainwindow.ui
