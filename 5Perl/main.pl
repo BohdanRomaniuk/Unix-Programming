@@ -2,6 +2,7 @@ use warnings;
 use strict;
 
 require './findOldestDir.pl';
+require './removeSimilar.pl';
 
 sub runFirstTaskTests
 {
@@ -35,18 +36,18 @@ sub main
 		if($ARGV[1] eq 'find-oldest-dir')
 		{
 			my ($oldestDir) = findOldestDir($ARGV[2]);
-        		print("Oldest dir: ${oldestDir}");
+        		print("Oldest dir: ${oldestDir}\n");
 		}
     		elsif($ARGV[1] eq 'delete-repeats' && $argsCount > 3)
 		{
 			my $directory = $ARGV[2];
 			my $allowedExt = $ARGV[3];
-			my $removedCount = 0;
-			print("Removed: ${removedCount} files");
+			my ($removedCount) = removeSimilar($directory, $allowedExt);
+			print("Removed: ${removedCount} files\n");
     		}
 		else
 		{
-			print("Wrong parameter use --help");
+			print("Wrong parameter use --help\n");
 		}
 	}
 }
