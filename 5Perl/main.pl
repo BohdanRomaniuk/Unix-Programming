@@ -3,15 +3,20 @@ use strict;
 
 require './findOldestDir.pl';
 require './removeSimilar.pl';
+require './tests.pl';
 
 sub runFirstTaskTests
 {
-	print("FiRST\n");
+	print("Test 1.1 ".(test1_1() ? "passed" : "failed")."\n");
+	print("Test 1.2 ".(test1_2() ? "passed" : "failed")."\n");
+	print("Test 1.3 ".(test1_3() ? "passed" : "failed")."\n");
 }
 
 sub runSecondTaskTests
 {
-	print("SECOND\n");
+	print("\nTest 2.1 ".(test2_1() ? "passed" : "failed")."\n");
+	print("Test 2.2 ".(test2_2() ? "passed" : "failed")."\n");
+	print("Test 2.3 ".(test2_3() ? "passed" : "failed")."\n");
 }
 
 sub main

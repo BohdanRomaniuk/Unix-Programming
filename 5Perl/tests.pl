@@ -1,44 +1,117 @@
 use warnings;
 use strict;
 use File::Path qw(make_path rmtree);
-require 'searchEngine.pl';
+require './findOldestDir.pl';
+require './removeSimilar.pl';
 
-sub test1{
-	#arrange
-	
-	my $machinePath = "/home/mihailo1996";	
-	
-	make_path("$machinePath/Test");
-	make_path("$machinePath/Test/1");
-	make_path("$machinePath/Test/2");
-	make_path("$machinePath/Test/3");
-	make_path("$machinePath/Test/2/1");
-	make_path("$machinePath/Test/2/2");
-	make_path("$machinePath/Test/2/3");
-	make_path("$machinePath/Test/2/4");
-	make_path("$machinePath/Test/3/1");
-	make_path("$machinePath/Test/2");
-
-	#act
-	
-	my ($fold, $count) = search("$machinePath/Test");
-
-	#assert
-	
-	if($count eq 4 && $fold eq "$machinePath/Test/2"){
-		print "TEST PASSED.\n";	
-	}
-	else{
-		print "TEST FAILED.\n";	
-	}
-	
-	#cleanUp
-	rmtree("$machinePath/Test");
+sub createEmptyFile
+{
+	my $path = $_[0];
+	open OUTFILE, ">", $path or die $!; 
+	close OUTFILE;
 }
 
-sub run{
-	test1();
+sub test1_1
+{
+	my $root = "./test";	
+	
+	make_path("$root/1");
+	sleep 1;
+	make_path("$root/2");
+	sleep 1;
+	make_path("$root/3");
+	
+	my ($oldestDir) = findOldestDir("$root/");
+	rmtree($root);
+
+	return index($oldestDir, "/1") != -1;
 }
 
-run();
+sub test1_2
+{
+	my $root = "./test";	
+	
+	make_path("$root/1");
+	sleep 1;
+	make_path("$root/1/2");
+	sleep 1;
+	make_path("$root/3");
+	
+	my ($oldestDir) = findOldestDir("$root/");
+	rmtree($root);
 
+	return index($oldestDir, "/1") != -1;
+}
+
+sub test1_3
+{
+	my $root = "./test";	
+	
+	make_path("$root/3");
+	sleep 1;
+	make_path("$root/3/2");
+	sleep 1;
+	make_path("$root/4");
+	sleep 1;
+	make_path("$root/1");
+	sleep 1;
+	make_path("$root/3/5");
+	
+	my ($oldestDir) = findOldestDir("$root/");
+	rmtree($root);
+
+	return index($oldestDir, "/3/2") != -1;
+}
+
+sub test2_1
+{
+	my $root = "./tests";
+	make_path($root);
+	createEmptyFile("$root/modest.h");
+	createEmptyFile("$root/modest.cpp");
+	createEmptyFile("$root/modest.txt");
+	my ($removedCount) = removeSimilar($root."/", ".cpp");
+	my $isFirstRemoved = !fileExist("$root/modest.h");
+	my $isThirdRemoved = !fileExist("$root/modest.h");
+	rmtree($root);
+	return $removedCount == 2 && $isFirstRemoved && $isThirdRemoved;
+}
+
+sub test2_2
+{
+	my $root = "./tests";
+	make_path($root);
+	createEmptyFile("$root/modest.h");
+	createEmptyFile("$root/modest.cpp");
+	createEmptyFile("$root/modest.txt");
+	createEmptyFile("$root/roman.h");
+	createEmptyFile("$root/roman.cpp");
+	my ($removedCount) = removeSimilar($root."/", ".cpp");
+	my $isFirstRemoved = !fileExist("$root/modest.h");
+	my $isThirdRemoved = !fileExist("$root/modest.h");
+	my $isFourthRemoved = !fileExist("$root/roman.h");
+	rmtree($root);
+	return $removedCount == 3 && $isFirstRemoved && $isThirdRemoved && $isFourthRemoved;
+}
+
+sub test2_3
+{
+	my $root = "./tests";
+	make_path($root);
+	createEmptyFile("$root/modest.h");
+	createEmptyFile("$root/modest.cpp");
+	createEmptyFile("$root/modest.txt");
+	createEmptyFile("$root/roman.h");
+	createEmptyFile("$root/roman.cpp");
+	createEmptyFile("$root/romn.cpp");
+	createEmptyFile("$root/buchik.cpp");
+	createEmptyFile("$root/buck.cpp");
+	my ($removedCount) = removeSimilar($root."/", ".cpp");
+	my $isFirstRemoved = !fileExist("$root/modest.h");
+	my $isThirdRemoved = !fileExist("$root/modest.h");
+	my $isFourthRemoved = !fileExist("$root/roman.h");
+	rmtree($root);
+	return $removedCount == 3 && $isFirstRemoved && $isThirdRemoved && $isFourthRemoved;
+}
+
+1;
