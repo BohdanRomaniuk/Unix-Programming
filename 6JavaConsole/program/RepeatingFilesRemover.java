@@ -1,3 +1,4 @@
+package program;
 import java.io.File;
 
 public class RepeatingFilesRemover
@@ -60,3 +61,4 @@ public class RepeatingFilesRemover
 		return removedCount;
 	}
 }
+

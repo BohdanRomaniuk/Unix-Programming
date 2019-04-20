@@ -1,8 +1,17 @@
+package tests;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-public class Tests
+import org.junit.jupiter.api.Test;
+
+import program.OldestFolderSearcher;
+import program.RepeatingFilesRemover;
+
+class TestsJUnit 
 {
 	private static void RemoveDirs(File root)
 	{
@@ -40,8 +49,9 @@ public class Tests
 			e.printStackTrace();
 		}
 	}
-	
-	public static boolean Test1_1()
+
+	@Test
+	void Test1_1()
 	{
 		File root = new File("./tests/");
 		root.mkdirs();
@@ -56,10 +66,11 @@ public class Tests
 		
 		RemoveDirs(root);
 		root.delete();
-		return result.contains("/1");
+		assertTrue(result.contains("/1"));
 	}
-	
-	public static boolean Test1_2()
+
+	@Test
+	void Test1_2()
 	{
 		File root = new File("./tests/");
 		root.mkdirs();
@@ -74,10 +85,11 @@ public class Tests
 		
 		RemoveDirs(root);
 		root.delete();
-		return result.contains("/1");
+		assertTrue(result.contains("/1"));
 	}
 	
-	public static boolean Test1_3()
+	@Test
+	void Test1_3()
 	{
 		File root = new File("./tests/");
 		root.mkdirs();
@@ -96,10 +108,11 @@ public class Tests
 		
 		RemoveDirs(root);
 		root.delete();
-		return result.contains("/3/2");
+		assertTrue(result.contains("/3/2"));
 	}
 	
-	public static boolean Test2_1()
+	@Test
+	void Test2_1()
 	{
 		File root = new File("./tests/");
 		root.mkdirs();
@@ -114,10 +127,11 @@ public class Tests
 		
 		RemoveDirs(root);
 		root.delete();
-		return result == 2 && firstRemoved && thirdRemoved;
+		assertTrue(result == 2 && firstRemoved && thirdRemoved);
 	}
 	
-	public static boolean Test2_2()
+	@Test
+	void Test2_2()
 	{
 		File root = new File("./tests/");
 		root.mkdirs();
@@ -135,10 +149,11 @@ public class Tests
 		
 		RemoveDirs(root);
 		root.delete();
-		return result == 3 && firstRemoved && thirdRemoved && fourthRemoved;
+		assertTrue(result == 3 && firstRemoved && thirdRemoved && fourthRemoved);
 	}
 	
-	public static boolean Test2_3()
+	@Test
+	void Test2_3()
 	{
 		File root = new File("./tests/");
 		root.mkdirs();
@@ -159,6 +174,6 @@ public class Tests
 		
 		RemoveDirs(root);
 		root.delete();
-		return result == 3 && firstRemoved && thirdRemoved && fourthRemoved;
+		assertTrue(result == 3 && firstRemoved && thirdRemoved && fourthRemoved);
 	}
 }

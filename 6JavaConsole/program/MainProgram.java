@@ -1,3 +1,5 @@
+package program;
+
 public class MainProgram 
 {
 	public static void RunFirstTaskTests()
