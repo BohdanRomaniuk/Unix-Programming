@@ -1,40 +1,41 @@
 use warnings;
 use strict;
 
-my $maxFolder;
-my $maxCount;
+my $oldestDirName;
+my $oldestDirTime;
 
-sub listDir{	
-	my $currentDir = $_[0];
-	my $currentDirSubCount = 0;
-		
+sub search
+{	
+	my $currentDir = $_[0];	
 	opendir(my $dh, $currentDir) || die ("Unable to open directory"); 
-	while (my $filename = readdir($dh)) {
-		if($filename eq "." || $filename eq "..") {
+	while (my $subDir = readdir($dh))
+	{	
+		if($subDir eq "." || $subDir eq "..") 
+		{
 			next;
 		}
-		
-		my $path = $currentDir.'/'.$filename;		
-		if(-d $path){
-			++$currentDirSubCount;
-			listDir($path);
+		my $path = $currentDir.''.$subDir.'/';		
+		if(-d $path)
+		{
+			my @stats = stat $path;
+			my $modifiedTime = $stats[9];
+			if($modifiedTime < $oldestDirTime)
+			{
+				$oldestDirTime = $modifiedTime;
+				$oldestDirName = $path;
+			}
+			search($path);
 		}
 	}
-	
 	closedir($dh);
-
-	if($currentDirSubCount > $maxCount){
-		$maxFolder = $currentDir;
-		$maxCount = $currentDirSubCount;	
-	}
 }
 
-sub search{
-	$maxFolder = "";
-	$maxCount = -1;
-
-	listDir($_[0]);
-	return ($maxFolder, $maxCount);
+sub findOldestDir
+{
+	$oldestDirName = "";
+	$oldestDirTime = time() + 24*60*60;
+	search($_[0]);
+	return ($oldestDirName);
 }
 
 1;

@@ -3,9 +3,20 @@ use strict;
 
 require './findOldestDir.pl';
 
-sub help
+sub runFirstTaskTests
 {
-	if(scalar(@ARGV) > 0 && $ARGV[0] eq '--help')
+	print("FiRST\n");
+}
+
+sub runSecondTaskTests
+{
+	print("SECOND\n");
+}
+
+sub main
+{	
+	my $argsCount = $#ARGV + 1;
+	if($argsCount > 0 && $ARGV[0] eq '--help')
 	{
 		print("Usage: perl main.pl [-t] [path] [ext] [--tests]\n");
     		print("       [-t] - type, find-oldest-dir or delete-repeats\n");
@@ -14,28 +25,30 @@ sub help
     		print("       [--tests] - run tests for both functionalities find-oldest-dir and delete-repeats");
 		exit();
 	}
-}
-
-sub main{
-	
-	help();
-	my $num_args = $#ARGV + 1;
-	if ($num_args != 1) {
-	    print "Specify folder name.\n";
-	    exit;
+	elsif($argsCount > 0 && $ARGV[0] eq '--tests')
+	{
+		runFirstTaskTests();
+		runSecondTaskTests();
 	}
-
-	my $dir = $ARGV[0];
-
-	unless(-d $dir){
-		print $dir." is not a folder.\n";
-		exit;	
+	elsif($argsCount > 2 && $ARGV[0] eq '-t')
+	{
+		if($ARGV[1] eq 'find-oldest-dir')
+		{
+			my ($oldestDir) = findOldestDir($ARGV[2]);
+        		print("Oldest dir: ${oldestDir}");
+		}
+    		elsif($ARGV[1] eq 'delete-repeats' && $argsCount > 3)
+		{
+			my $directory = $ARGV[2];
+			my $allowedExt = $ARGV[3];
+			my $removedCount = 0;
+			print("Removed: ${removedCount} files");
+    		}
+		else
+		{
+			print("Wrong parameter use --help");
+		}
 	}
-
-	my ($maxF, $maxC) = search($dir);
-
-	print $maxF."\n";
-	print $maxC."\n";
 }
 
 main();
