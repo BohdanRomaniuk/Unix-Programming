@@ -1,9 +1,16 @@
 # Unix-Programming
 
-6. Java Console
+## 6. Java Console
 - Compiling
-  javac *.java
+```console
+javac *.java
+```
+  
 - Running
-  java program.MainProgram
+```console
+  java program.MainProgram --help
+```
 If you are compiling and running from program folder please use following line
+```console
   java -classpath ../ program.MainProgram --help
+```
