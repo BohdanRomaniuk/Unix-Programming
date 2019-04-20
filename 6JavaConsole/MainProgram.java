@@ -1,5 +1,15 @@
 public class MainProgram 
 {
+	public static void RunFirstTaskTests()
+	{
+		System.out.println("Test 1.1: " + (Tests.Test1_1() ? "passed" : "failed"));
+	}
+	
+	public static void RunSecondTaskTests()
+	{
+		
+	}
+	
 	public static void main(String[] args)
 	{
 		if(args.length > 0 && args[0].equals("--help"))
@@ -12,20 +22,24 @@ public class MainProgram
 		}
 		else if(args.length > 0 && args[0].equals("--tests"))
 		{
-			System.out.println("Running tests");
+			RunFirstTaskTests();
+			RunSecondTaskTests();
 		}
 		else if(args.length > 2 && args[0].equals("-t"))
 		{
 			if(args[1].equals("find-oldest-dir"))
 			{
 				String directory = args[2];
-				System.out.println("Oldest dir: " + directory);
+				OldestFolderSearcher searcher = new OldestFolderSearcher();
+				String oldestDir = searcher.FindOldestDir(directory);
+				System.out.println("Oldest dir: " + oldestDir);
 			}
 			else if(args[1].equals("delete-repeats") && args.length > 3)
 			{
-				//String directory = args[2];
-				//String allowedExt = args[3];
-				int removedCount = 0;
+				String directory = args[2];
+				String allowedExt = args[3];
+				RepeatingFilesRemover remover = new RepeatingFilesRemover();
+				int removedCount = remover.RemoveRepeatingFiles(directory, allowedExt);
 				System.out.println("Removed: " + removedCount + " files\n");
 	    	}
 		}
