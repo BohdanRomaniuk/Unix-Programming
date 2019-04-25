@@ -81,3 +81,14 @@ If you are compiling and running from program folder please use following line
 ```console
 java -classpath ../ program.MainProgram --help
 ```
+
+## 8. .NET Core
+- Running (in bin/.net core directory)
+```console
+dotnet DotNetCore.dll --help
+```
+
+```console
+dotnet DotNetCore.dll -t find-oldest-dir /home/bohdan/first
+dotnet DotNetCore.dll -t delete-repeats /home/bohdan/second .cpp
+```
