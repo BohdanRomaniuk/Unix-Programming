@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="482a7952-f244-4c72-a59b-c980a322b759" name="Default Changelist" comment="d">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.DotNetCore/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetCore/OldestFolderSearcher.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetCore/RepeatingFilesRemover.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetCore/Tests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DotNetCore/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DotNetCore/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DotNetCore/Tests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DotNetCore/Tests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DotNetCore/obj/Debug/netcoreapp2.1/DotNetCore.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DotNetCore/obj/Debug/netcoreapp2.1/DotNetCore.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DotNetCore/obj/Debug/netcoreapp2.1/DotNetCore.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DotNetCore/obj/Debug/netcoreapp2.1/DotNetCore.pdb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,22 +18,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DotNetCore/Program.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-213">
-              <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+            <state relative-caret-position="210">
+              <caret line="15" column="12" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
               <folding>
-                <marker date="1556224803013" expanded="true" signature="35:2531" ph="{...}" />
-                <marker date="1556224803013" expanded="true" signature="55:2529" ph="{...}" />
-                <marker date="1556224803013" expanded="true" signature="101:386" ph="{...}" />
-                <marker date="1556224803013" expanded="true" signature="124:376" ph="/* Console.WriteLine(&quot;Test 1.1: &quot; + (Tests.Test1_1() ? &quot;passed&quot; : &quot;failed&quot;)); ... */" />
-                <marker date="1556224803013" expanded="true" signature="429:716" ph="{...}" />
-                <marker date="1556224803013" expanded="true" signature="452:706" ph="/* Console.WriteLine(&quot;\nTest 2.1: &quot; + (Tests.Test2_1() ? &quot;passed&quot; : &quot;failed&quot;)); ... */" />
-                <marker date="1556224803013" expanded="true" signature="765:2523" ph="{...}" />
-                <marker date="1556224803013" expanded="true" signature="830:1343" ph="{...}" />
-                <marker date="1556224803013" expanded="true" signature="1404:1507" ph="{...}" />
-                <marker date="1556224803013" expanded="true" signature="1563:2403" ph="{...}" />
-                <marker date="1556224803013" expanded="true" signature="1626:1931" ph="{...}" />
-                <marker date="1556224803013" expanded="true" signature="2003:2389" ph="{...}" />
-                <marker date="1556224803013" expanded="true" signature="2420:2513" ph="{...}" />
+                <marker date="1556226351614" expanded="true" signature="35:2523" ph="{...}" />
+                <marker date="1556226351614" expanded="true" signature="55:2521" ph="{...}" />
+                <marker date="1556226351614" expanded="true" signature="101:382" ph="{...}" />
+                <marker date="1556226351614" expanded="true" signature="425:708" ph="{...}" />
+                <marker date="1556226351614" expanded="true" signature="757:2515" ph="{...}" />
+                <marker date="1556226351614" expanded="true" signature="822:1335" ph="{...}" />
+                <marker date="1556226351614" expanded="true" signature="1396:1499" ph="{...}" />
+                <marker date="1556226351614" expanded="true" signature="1555:2395" ph="{...}" />
+                <marker date="1556226351614" expanded="true" signature="1618:1923" ph="{...}" />
+                <marker date="1556226351614" expanded="true" signature="1995:2381" ph="{...}" />
+                <marker date="1556226351614" expanded="true" signature="2412:2505" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -85,11 +82,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DotNetCore/Tests.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+            <state relative-caret-position="1995">
+              <caret line="133" column="16" selection-start-line="133" selection-start-column="16" selection-end-line="133" selection-end-column="16" />
               <folding>
-                <marker date="1556224258310" expanded="true" signature="20:75" ph="{...}" />
-                <marker date="1556224258310" expanded="true" signature="52:73" ph="{...}" />
+                <marker date="1556226331226" expanded="true" signature="6:40" ph="..." />
+                <marker date="1556226331226" expanded="true" signature="62:4436" ph="{...}" />
+                <marker date="1556226331226" expanded="true" signature="94:4434" ph="{...}" />
+                <marker date="1556226331226" expanded="true" signature="149:388" ph="{...}" />
+                <marker date="1556226331226" expanded="true" signature="260:381" ph="{...}" />
+                <marker date="1556226331226" expanded="true" signature="294:349" ph="{...}" />
+                <marker date="1556226331226" expanded="true" signature="443:492" ph="{...}" />
+                <marker date="1556226331226" expanded="true" signature="537:585" ph="{...}" />
+                <marker date="1556226331226" expanded="true" signature="620:1041" ph="{...}" />
+                <marker date="1556226331226" expanded="true" signature="1076:1499" ph="{...}" />
+                <marker date="1556226331226" expanded="true" signature="1534:2085" ph="{...}" />
+                <marker date="1556226331226" expanded="true" signature="2120:2700" ph="{...}" />
+                <marker date="1556226331226" expanded="true" signature="2735:3498" ph="{...}" />
+                <marker date="1556226331226" expanded="true" signature="3533:4428" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -110,8 +119,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/DotNetCore/RepeatingFilesRemover.cs" />
-        <option value="$PROJECT_DIR$/DotNetCore/Tests.cs" />
         <option value="$PROJECT_DIR$/DotNetCore/OldestFolderSearcher.cs" />
+        <option value="$PROJECT_DIR$/DotNetCore/Tests.cs" />
         <option value="$PROJECT_DIR$/DotNetCore/Program.cs" />
       </list>
     </option>
@@ -204,12 +213,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1556223420967</updated>
-      <workItem from="1556223422959" duration="1654000" />
+      <workItem from="1556223422959" duration="2923000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1654000" />
+    <option name="totallyTimeSpent" value="2923000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -289,17 +298,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DotNetCore/Tests.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
-          <folding>
-            <marker date="1556224258310" expanded="true" signature="20:75" ph="{...}" />
-            <marker date="1556224258310" expanded="true" signature="52:73" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DotNetCore/OldestFolderSearcher.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -317,24 +315,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/DotNetCore/Tests.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1995">
+          <caret line="133" column="16" selection-start-line="133" selection-start-column="16" selection-end-line="133" selection-end-column="16" />
+          <folding>
+            <marker date="1556226331226" expanded="true" signature="6:40" ph="..." />
+            <marker date="1556226331226" expanded="true" signature="62:4436" ph="{...}" />
+            <marker date="1556226331226" expanded="true" signature="94:4434" ph="{...}" />
+            <marker date="1556226331226" expanded="true" signature="149:388" ph="{...}" />
+            <marker date="1556226331226" expanded="true" signature="260:381" ph="{...}" />
+            <marker date="1556226331226" expanded="true" signature="294:349" ph="{...}" />
+            <marker date="1556226331226" expanded="true" signature="443:492" ph="{...}" />
+            <marker date="1556226331226" expanded="true" signature="537:585" ph="{...}" />
+            <marker date="1556226331226" expanded="true" signature="620:1041" ph="{...}" />
+            <marker date="1556226331226" expanded="true" signature="1076:1499" ph="{...}" />
+            <marker date="1556226331226" expanded="true" signature="1534:2085" ph="{...}" />
+            <marker date="1556226331226" expanded="true" signature="2120:2700" ph="{...}" />
+            <marker date="1556226331226" expanded="true" signature="2735:3498" ph="{...}" />
+            <marker date="1556226331226" expanded="true" signature="3533:4428" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/DotNetCore/Program.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-213">
-          <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+        <state relative-caret-position="210">
+          <caret line="15" column="12" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
           <folding>
-            <marker date="1556224803013" expanded="true" signature="35:2531" ph="{...}" />
-            <marker date="1556224803013" expanded="true" signature="55:2529" ph="{...}" />
-            <marker date="1556224803013" expanded="true" signature="101:386" ph="{...}" />
-            <marker date="1556224803013" expanded="true" signature="124:376" ph="/* Console.WriteLine(&quot;Test 1.1: &quot; + (Tests.Test1_1() ? &quot;passed&quot; : &quot;failed&quot;)); ... */" />
-            <marker date="1556224803013" expanded="true" signature="429:716" ph="{...}" />
-            <marker date="1556224803013" expanded="true" signature="452:706" ph="/* Console.WriteLine(&quot;\nTest 2.1: &quot; + (Tests.Test2_1() ? &quot;passed&quot; : &quot;failed&quot;)); ... */" />
-            <marker date="1556224803013" expanded="true" signature="765:2523" ph="{...}" />
-            <marker date="1556224803013" expanded="true" signature="830:1343" ph="{...}" />
-            <marker date="1556224803013" expanded="true" signature="1404:1507" ph="{...}" />
-            <marker date="1556224803013" expanded="true" signature="1563:2403" ph="{...}" />
-            <marker date="1556224803013" expanded="true" signature="1626:1931" ph="{...}" />
-            <marker date="1556224803013" expanded="true" signature="2003:2389" ph="{...}" />
-            <marker date="1556224803013" expanded="true" signature="2420:2513" ph="{...}" />
+            <marker date="1556226351614" expanded="true" signature="35:2523" ph="{...}" />
+            <marker date="1556226351614" expanded="true" signature="55:2521" ph="{...}" />
+            <marker date="1556226351614" expanded="true" signature="101:382" ph="{...}" />
+            <marker date="1556226351614" expanded="true" signature="425:708" ph="{...}" />
+            <marker date="1556226351614" expanded="true" signature="757:2515" ph="{...}" />
+            <marker date="1556226351614" expanded="true" signature="822:1335" ph="{...}" />
+            <marker date="1556226351614" expanded="true" signature="1396:1499" ph="{...}" />
+            <marker date="1556226351614" expanded="true" signature="1555:2395" ph="{...}" />
+            <marker date="1556226351614" expanded="true" signature="1618:1923" ph="{...}" />
+            <marker date="1556226351614" expanded="true" signature="1995:2381" ph="{...}" />
+            <marker date="1556226351614" expanded="true" signature="2412:2505" ph="{...}" />
           </folding>
         </state>
       </provider>
