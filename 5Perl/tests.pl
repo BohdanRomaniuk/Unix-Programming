@@ -1,7 +1,7 @@
 use warnings;
 use strict;
 use File::Path qw(make_path rmtree);
-use File::Tempdir;
+use File::Temp qw(tempdir);
 
 require './findOldestDir.pl';
 require './removeSimilar.pl';
@@ -15,7 +15,7 @@ sub createEmptyFile
 
 sub test1_1
 {
-	my $root = "./test";	
+	my $root = tempdir();	
 	
 	make_path("$root/1");
 	sleep 1;
@@ -31,7 +31,7 @@ sub test1_1
 
 sub test1_2
 {
-	my $root = "./test";	
+	my $root = tempdir();	
 	
 	make_path("$root/1");
 	sleep 1;
@@ -47,7 +47,7 @@ sub test1_2
 
 sub test1_3
 {
-	my $root = "./test";	
+	my $root = tempdir();	
 	
 	make_path("$root/3");
 	sleep 1;
@@ -67,7 +67,7 @@ sub test1_3
 
 sub test2_1
 {
-	my $root = "./tests";
+	my $root = tempdir();
 	make_path($root);
 	createEmptyFile("$root/modest.h");
 	createEmptyFile("$root/modest.cpp");
@@ -81,7 +81,7 @@ sub test2_1
 
 sub test2_2
 {
-	my $root = "./tests";
+	my $root = tempdir();
 	make_path($root);
 	createEmptyFile("$root/modest.h");
 	createEmptyFile("$root/modest.cpp");
@@ -98,7 +98,7 @@ sub test2_2
 
 sub test2_3
 {
-	my $root = "./tests";
+	my $root = tempdir();
 	make_path($root);
 	createEmptyFile("$root/modest.h");
 	createEmptyFile("$root/modest.cpp");
