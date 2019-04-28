@@ -59,6 +59,14 @@ perl main.pl -t find-oldest-dir /home/bohdan/first/
 perl main.pl -t delete-repeats /home/bohdan/second .cpp
 ```
 
+- Running (withour perl in the beginning)
+```console
+./main.pl --help
+./main.pl --tests
+./main.pl -t find-oldest-dir /home/bohdan/first/
+./main.pl -t delete-repeats /home/bohdan/second .cpp
+```
+
 ## 6. Java Console
 - Installing java and Eclipse
 ```console

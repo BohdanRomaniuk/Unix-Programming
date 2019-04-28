@@ -1,4 +1,5 @@
 using System.IO;
+using System;
 using System.Threading;
 
 namespace DotNetCore
@@ -30,110 +31,122 @@ namespace DotNetCore
 
 	    public static bool Test1_1()
 	    {
-		    Directory.CreateDirectory("./tests/");
-		    Directory.CreateDirectory("./tests/1");
+		    string tempDir = Path.GetTempPath();
+		    string testPath = Path.Combine(tempDir, "tests/");
+		    Directory.CreateDirectory(tempDir);
+		    Directory.CreateDirectory(testPath + "1/");
 		    Sleep(1);
-		    Directory.CreateDirectory("./tests/2");
+		    Directory.CreateDirectory(testPath + "2/");
 		    Sleep(1);
-		    Directory.CreateDirectory("./tests/3");
+		    Directory.CreateDirectory(testPath + "3/");
 
 		    OldestFolderSearcher searcher = new OldestFolderSearcher();
-		    string result = searcher.FindOldestDir("./tests/");
-
-		    RemoveDirs("./tests/");
+		    string result = searcher.FindOldestDir(testPath);
+		    
+		    RemoveDirs(testPath);
 		    return result.Contains("/1");
 	    }
 
 	    public static bool Test1_2()
 	    {
-		    Directory.CreateDirectory("./tests/");
-		    Directory.CreateDirectory("./tests/1");
+		    string tempDir = Path.GetTempPath();
+		    string testPath = Path.Combine(tempDir, "tests/");
+		    Directory.CreateDirectory(tempDir);
+		    Directory.CreateDirectory(testPath + "1/");
 		    Sleep(1);
-		    Directory.CreateDirectory("./tests/1/2");
+		    Directory.CreateDirectory(testPath + "1/2/");
 		    Sleep(1);
-		    Directory.CreateDirectory("./tests/3");
+		    Directory.CreateDirectory(testPath + "3/");
 
 		    OldestFolderSearcher searcher = new OldestFolderSearcher();
-		    string result = searcher.FindOldestDir("./tests/");
+		    string result = searcher.FindOldestDir(testPath);
 
-		    RemoveDirs("./tests/");
+		    RemoveDirs(testPath);
 		    return result.Contains("/1");
 	    }
 
 	    public static bool Test1_3()
 	    {
-		    Directory.CreateDirectory("./tests/");
-		    Directory.CreateDirectory("./tests/3");
+		    string tempDir = Path.GetTempPath();
+		    string testPath = Path.Combine(tempDir, "tests/");
+		    Directory.CreateDirectory(tempDir);
+		    Directory.CreateDirectory(testPath + "3/");
 		    Sleep(1);
-		    Directory.CreateDirectory("./tests/3/2");
+		    Directory.CreateDirectory(testPath + "3/2/");
 		    Sleep(1);
-		    Directory.CreateDirectory("./tests/4");
+		    Directory.CreateDirectory(testPath + "4/");
 		    Sleep(1);
-		    Directory.CreateDirectory("./tests/1");
+		    Directory.CreateDirectory(testPath + "1/");
 		    Sleep(1);
-		    Directory.CreateDirectory("./tests/3/5");
+		    Directory.CreateDirectory(testPath + "3/5/");
 
 		    OldestFolderSearcher searcher = new OldestFolderSearcher();
-		    string result = searcher.FindOldestDir("./tests/");
+		    string result = searcher.FindOldestDir(testPath);
 
-		    RemoveDirs("./tests/");
+		    RemoveDirs(testPath);
 		    return result.Contains("/3/2");
 	    }
 
 	    public static bool Test2_1()
 	    {
-		    Directory.CreateDirectory("./tests/");
-		    CreateEmptyFile("./tests/modest.h");
-		    CreateEmptyFile("./tests/modest.cpp");
-		    CreateEmptyFile("./tests/modest.txt");
+		    string tempDir = Path.GetTempPath();
+		    string testPath = Path.Combine(tempDir, "tests/");
+		    Directory.CreateDirectory(tempDir);
+		    CreateEmptyFile(testPath + "modest.h");
+		    CreateEmptyFile(testPath + "modest.cpp");
+		    CreateEmptyFile(testPath + "modest.txt");
 
 		    RepeatingFilesRemover remover = new RepeatingFilesRemover();
-		    int result = remover.RemoveRepeatingFiles("./tests/", ".cpp");
-		    bool firstRemoved = !RepeatingFilesRemover.FileExist("./tests/modest.h");
-		    bool thirdRemoved = !RepeatingFilesRemover.FileExist("./tests/modest.txt");
+		    int result = remover.RemoveRepeatingFiles(testPath, ".cpp");
+		    bool firstRemoved = !RepeatingFilesRemover.FileExist(testPath + "modest.h");
+		    bool thirdRemoved = !RepeatingFilesRemover.FileExist(testPath + "modest.txt");
 
-		    RemoveDirs("./tests/");
+		    RemoveDirs(testPath);
 		    return result == 2 && firstRemoved && thirdRemoved;
 	    }
 
 	    public static bool Test2_2()
 	    {
-		    Directory.CreateDirectory("./tests/");
-		    CreateEmptyFile("./tests/modest.h");
-		    CreateEmptyFile("./tests/modest.cpp");
-		    CreateEmptyFile("./tests/modest.txt");
-		    CreateEmptyFile("./tests/roman.h");
-		    CreateEmptyFile("./tests/roman.cpp");
+		    string tempDir = Path.GetTempPath();
+		    string testPath = Path.Combine(tempDir, "tests/");
+		    Directory.CreateDirectory(tempDir);
+		    CreateEmptyFile(testPath + "modest.h");
+		    CreateEmptyFile(testPath + "modest.cpp");
+		    CreateEmptyFile(testPath + "modest.txt");
+		    CreateEmptyFile(testPath + "roman.h");
+		    CreateEmptyFile(testPath + "roman.cpp");
 
 		    RepeatingFilesRemover remover = new RepeatingFilesRemover();
-		    int result = remover.RemoveRepeatingFiles("./tests/", ".cpp");
-		    bool firstRemoved = !RepeatingFilesRemover.FileExist("./tests/modest.h");
-		    bool thirdRemoved = !RepeatingFilesRemover.FileExist("./tests/modest.txt");
-		    bool fourthRemoved = !RepeatingFilesRemover.FileExist("./tests/roman.h");
+		    int result = remover.RemoveRepeatingFiles(testPath, ".cpp");
+		    bool firstRemoved = !RepeatingFilesRemover.FileExist(testPath + "modest.h");
+		    bool thirdRemoved = !RepeatingFilesRemover.FileExist(testPath + "modest.txt");
+		    bool fourthRemoved = !RepeatingFilesRemover.FileExist(testPath + "roman.h");
 
-		    RemoveDirs("./tests/");
+		    RemoveDirs(testPath);
 		    return result == 3 && firstRemoved && thirdRemoved && fourthRemoved;
 	    }
 
 	    public static bool Test2_3()
 	    {
-		    Directory.CreateDirectory("./tests/");
-		    CreateEmptyFile("./tests/modest.h");
-		    CreateEmptyFile("./tests/modest.cpp");
-		    CreateEmptyFile("./tests/modest.txt");
-		    CreateEmptyFile("./tests/roman.h");
-		    CreateEmptyFile("./tests/roman.cpp");
-		    CreateEmptyFile("./tests/romn.cpp");
-		    CreateEmptyFile("./tests/buchik.cpp");
-		    CreateEmptyFile("./tests/buchk.cpp");
+		    string tempDir = Path.GetTempPath();
+		    string testPath = Path.Combine(tempDir, "tests/");
+		    Directory.CreateDirectory(tempDir);
+		    CreateEmptyFile(testPath + "modest.h");
+		    CreateEmptyFile(testPath + "modest.cpp");
+		    CreateEmptyFile(testPath + "modest.txt");
+		    CreateEmptyFile(testPath + "roman.h");
+		    CreateEmptyFile(testPath + "roman.cpp");
+		    CreateEmptyFile(testPath + "romn.cpp");
+		    CreateEmptyFile(testPath + "buchik.cpp");
+		    CreateEmptyFile(testPath + "buchk.cpp");
 
 		    RepeatingFilesRemover remover = new RepeatingFilesRemover();
-		    int result = remover.RemoveRepeatingFiles("./tests/", ".cpp");
-		    bool firstRemoved = !RepeatingFilesRemover.FileExist("./tests/modest.h");
-		    bool thirdRemoved = !RepeatingFilesRemover.FileExist("./tests/modest.txt");
-		    bool fourthRemoved = !RepeatingFilesRemover.FileExist("./tests/roman.h");
+		    int result = remover.RemoveRepeatingFiles(testPath, ".cpp");
+		    bool firstRemoved = !RepeatingFilesRemover.FileExist(testPath + "modest.h");
+		    bool thirdRemoved = !RepeatingFilesRemover.FileExist(testPath + "modest.txt");
+		    bool fourthRemoved = !RepeatingFilesRemover.FileExist(testPath + "roman.h");
 
-		    RemoveDirs("./tests/");
+		    RemoveDirs(testPath);
 		    return result == 3 && firstRemoved && thirdRemoved && fourthRemoved;
 	    }
     }
