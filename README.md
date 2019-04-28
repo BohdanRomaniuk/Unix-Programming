@@ -100,3 +100,16 @@ dotnet DotNetCore.dll --help
 dotnet DotNetCore.dll -t find-oldest-dir /home/bohdan/first
 dotnet DotNetCore.dll -t delete-repeats /home/bohdan/second .cpp
 ```
+
+- Running (without dotnet in the beginning)
+Firtly publish your application to Release folder (run in folder with .csproj file)
+```console
+dotnet publish -c Release -r ubuntu.18.04-x64
+```
+
+Then go to Release folder and run
+```console
+./DotNetCore --help
+```
+
+

@@ -22,7 +22,7 @@ namespace DotNetCore
         {
             if(args.Length > 0 && args[0] == "--help")
             {
-                Console.WriteLine("Usage: java MainProgram [-t] [path] [ext] [--tests]");
+                Console.WriteLine("Usage: ./DotNetCore [-t] [path] [ext] [--tests]");
                 Console.WriteLine("       [-t] - type, find-oldest-dir or delete-repeats");
                 Console.WriteLine("       [path] - path to the directory");
                 Console.WriteLine("       [ext] - extension of allowed files when delete-repeats");
